@@ -254,6 +254,13 @@ func (nt *SqlNullTime) UnmarshalJSON(b []byte) error {
 		}
 		nt.Time = t
 		nt.Valid=true
+	case "xxxx-xx-xxTxx:xx:xxZ":
+		t, err := time.Parse("2006-01-02T15:04:05Z", s)
+		if err != nil {
+			return err
+		}
+		nt.Time = t
+		nt.Valid=true
 	}
 
 	return nil
